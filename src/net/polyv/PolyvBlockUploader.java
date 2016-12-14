@@ -199,7 +199,7 @@ public class PolyvBlockUploader {
 			bucketName = (String) datajson.get("bucketName");
 			fileKey = (String) datajson.get("fileKey");
 
-			Config.PUT_URL = (String) datajson.get("putUrl");
+			Config.PUT_URL = ((String) datajson.get("putUrl")).replace("https", "http");
 			Config.MGR_URL = (String) datajson.get("mgrUrl");
 			Config.VERSION_NO = "polyv-java-sdk-1.6.3";
 

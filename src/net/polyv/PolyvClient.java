@@ -235,16 +235,10 @@ public class PolyvClient {
 	private static String getMD5(String filename) {
 		String checksum = "";
 		try {
-			checksum = DigestUtils.md5Hex(new FileInputStream(filename));
-			/*
-			 * File file = new File(filename); FileInputStream in = new
-			 * FileInputStream(file); MappedByteBuffer byteBuffer =
-			 * in.getChannel().map( FileChannel.MapMode.READ_ONLY, 0,
-			 * file.length()); MessageDigest md5 =
-			 * MessageDigest.getInstance("MD5"); md5.update(byteBuffer);
-			 * BigInteger bi = new BigInteger(1, md5.digest()); return
-			 * bi.toString(16);
-			 */
+			//checksum = DigestUtils.md5Hex(new FileInputStream(filename));
+		    File f = new File(filename);
+		    checksum = DigestUtils.md5Hex(filename + System.currentTimeMillis() + f.length());
+		    
 
 		} catch (Exception e) {
 			e.printStackTrace();

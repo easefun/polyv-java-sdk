@@ -3,6 +3,7 @@ package com.polyv.sdk.test;
 import java.util.List;
 
 import net.polyv.Progress;
+import net.polyv.UploadListener;
 
 import com.polyv.sdk.PolyvSDKClient;
 import com.polyv.sdk.Video;
@@ -19,7 +20,8 @@ public class Tester {
 		// TODO Auto-generated method stub
 		//testUpload();
 		//testResumableUpload();
-        testDeleteVideo();
+        //testDeleteVideo();
+        testResumableUpload();
 	}
 	/**
 	 * 断点续传上传实例
@@ -30,7 +32,7 @@ public class Tester {
 
 		String vid = "";
 		try {
-			vid = client.resumableUpload("/Users/hhl/Desktop/videos/名字abc.mp4", "标题11", "", "", 1,new Progress(){
+			vid = client.resumableUpload("/Users/hhl/Desktop/videos/share.mp4", "标题11", "", "", 1,new Progress(){
 				public void run(long offset, long max) {
 					// TODO Auto-generated method stub
 					int percent = (int)(offset*100/max);
@@ -39,6 +41,17 @@ public class Tester {
 				}
 				
 				
+			},new UploadListener() {
+				
+				@Override
+				public void success(String body) {
+					System.out.println("上传成功："+body);
+				}
+				
+				@Override
+				public void fail(Exception ex) {
+					System.out.println("上传失败："+ex.getLocalizedMessage());
+				}
 			});
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -51,8 +64,8 @@ public class Tester {
 	}
 	public static void testGet() {
 		try {
-			Video v = PolyvSDKClient.getInstance().getVideo("sl8da4jjbx33489b03e87dd99641901d_s");
-			System.out.println(v.getDuration());
+			Video v = PolyvSDKClient.getInstance().getVideo("01b768ec8cd3226845437dd10b93fc06_0");
+			System.out.println(v.getStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
