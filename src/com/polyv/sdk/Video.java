@@ -12,7 +12,7 @@ import org.json.JSONObject;
  */
 public class Video {
     private final String swfLink;
-    private final int sourceFileSize;
+    private final long sourceFileSize;
     private final int status;
     private final String tag;
     private final int seed;
@@ -29,7 +29,7 @@ public class Video {
     private final String vid;
     private final String ptime;
     private final long cataid;
-    public Video(String swfLink, int sourceFileSize, int status, String tag, int seed, int playerWidth,
+    public Video(String swfLink, long sourceFileSize, int status, String tag, int seed, int playerWidth,
             List<Long> fileSize, String duration, String title, int df, String firstImage, int times, String context,
             String originalDefinition, int playerHeight, String vid, String ptime, long cataid) {
         super();
@@ -55,7 +55,7 @@ public class Video {
     public String getSwfLink() {
         return swfLink;
     }
-    public int getSourceFileSize() {
+    public long getSourceFileSize() {
         return sourceFileSize;
     }
     public int getStatus() {
