@@ -111,7 +111,7 @@ public class Video {
         int length = 0;
         
         String swfLink = jsonObject.optString("swf_link", "");
-        int sourceFileSize = jsonObject.optInt("source_filesize", 0);
+        long sourceFileSize = jsonObject.optLong("source_filesize", 0);
         int status = jsonObject.optInt("status", 0);
         String tag = jsonObject.optString("tag", "");
         int seed = jsonObject.optInt("seed", 0);
